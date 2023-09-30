@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    width: 100vw;
+    background-color: rgb(115, 192, 236);
+    position: sticky;
+    top: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+.h1 {
+    flex: 1;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    padding-bottom: 3rem;
+    color: #14222b;
+}
+
+.nav {
+    align-self: end;
+    justify-self: left;
+    padding-bottom: 2px;
+    width: 30vw;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #14222b;
+}
+
+.ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 2rem;
+}
+
+.counterBalanceNav {
+    width: 30vw;
+}

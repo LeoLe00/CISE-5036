@@ -8,17 +8,6 @@
   color: black;
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 8vh;
-  width: 100vw;
-  margin-bottom: 2rem;
-  background-color: rgb(115, 192, 236);
-}
-
 .title {
   display: inherit;
   justify-content: inherit;

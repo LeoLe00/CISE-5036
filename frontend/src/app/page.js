@@ -1,14 +1,12 @@
-import Image from 'next/image'
 import styles from './page.module.css'
+import Search from '../components/search'
 
 export default function Home() {
   return (
-    <body>
-      <main className={styles.main}>
-        <header> <a className={styles.title}>SPEED</a> 
-        </header>
-        <a className={styles.title}>HdI</a>
-      </main>
-    </body>
+    <main>
+      <Search />
+    </main>
+
+
   )
 }
