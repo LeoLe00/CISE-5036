@@ -5,6 +5,10 @@ export default function Home() {
   return (
     <main>
       <Search />
+      {/*to add: 
+      - searching functionality working with the backend
+      - results table
+      */}
     </main>
 
 
