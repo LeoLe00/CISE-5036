@@ -5,12 +5,9 @@ import './ModeratePage.module.css';
 const ModeratePage = () => {
   const [articles, setArticles] = useState([]);
 
-  useEffect(() => {
-    fetch('/api/submitted-articles')
-      .then(response => response.json())
-      .then(data => setArticles(data))
-      .catch(error => console.error('Error fetching articles:', error));
-  }, []);
+  const handleFailed = (articleId) => {
+    console.log('rror fetching articles:', error);
+ 
 
   const handleApprove = (articleId) => {
     console.log('Approving article with ID:', articleId);
