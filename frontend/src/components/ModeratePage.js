@@ -29,4 +29,3 @@ const ModeratePage = () => {
   );
 }
 
-export default ModeratePage;
