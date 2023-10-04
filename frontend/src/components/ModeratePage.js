@@ -5,7 +5,7 @@ import './ModeratePage.module.css';
 const ModeratePage = () => {
   const [articles, setArticles] = useState([]);
 
-  const handleFailed = (articleId) => {
+  const handleFailed != (articleId) => {
     console.log('rror fetching articles:', error);
  
 
