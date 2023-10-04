@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState useEffect } from 'react';
 import './ModeratePage.module.css';
 
 const ModeratePage = () => {
