@@ -1,10 +1,10 @@
+import ArticleForm from "../../components/articleForm"
 
 export default function Suggest() {
   return (
     <main>
-      Suggest
+      <ArticleForm />
+      
     </main>
-
-
-  )
-}
+  );
+};
