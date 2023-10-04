@@ -1,0 +1,43 @@
+.moderate-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+  }
+  
+  .moderate-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .moderate-page ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .moderate-page li {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    position: relative;
+  }
+  
+  .moderate-page button {
+    background-color: #3015c9; 
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 4px;
+  }
+  
+  .moderate-page button:hover {
+    background-color: #480db4;
+  }
+  
