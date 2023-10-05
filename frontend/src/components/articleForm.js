@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './articleForm.module.css';
 
 export default function ArticleForm() {
@@ -11,20 +11,29 @@ export default function ArticleForm() {
   const [number, setNumber] = useState('');
   const [pages, setPages] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // You can handle the data submission or processing here
-    // For now, let's just log the entered details
-    console.log({
-      author,
-      title,
-      journal,
-      year,
-      volume,
-      number,
-      pages,
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch('http://localhost:8082/api/articles', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: articleName }),
+    })
+    .then((response) => response.json())
+      .then((data) => console.log('Article created:', data))
+      .catch((error) => console.error('Error creating article:', error));
+
+    const data = await response.json();
+    setArticles([...articles, data]);
+    setArticleName('');
   };
+
+  useEffect(() => {
+    fetchArticles('');
+  }, []);
+  
+
 
   return (
     <div className={styles.outerContainer}>

@@ -5,8 +5,8 @@ import { useState } from 'react'
 export default function Search({ onSearch }) {
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleInputChange = (event) => {
-        setSearchTerm(event.target.value);
+    const handleInputChange = (e) => {
+        setSearchTerm(e.target.value);
     };
 
     const handleSearch = () => {
