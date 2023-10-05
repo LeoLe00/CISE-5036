@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
-import './ModeratePage.module.css';
+import styles from './ModeratePage.module.css';
+
 
 function ModeratePage() {
     const initialArticles = [
