@@ -1,10 +1,10 @@
+import AnalysisPage from "../../components/AnalysisPage"
 
 export default function Analyse() {
   return (
     <main>
-      Analyse
+      <AnalysisPage />
+      
     </main>
-
-
-  )
-}
+  );
+};
