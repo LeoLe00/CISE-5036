@@ -51,5 +51,3 @@ function AnalysisPage() {
         </div>
     );
 }
-
-export default AnalysisPage;
