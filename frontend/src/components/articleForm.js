@@ -11,7 +11,7 @@ export default function ArticleForm() {
   const [number, setNumber] = useState('');
   const [pages, setPages] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = saync(event) => {
     event.preventDefault();
     // You can handle the data submission or processing here
     // For now, let's just log the entered details
