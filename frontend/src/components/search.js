@@ -23,7 +23,7 @@ const claims = [
 
 const claimsMap = claims.map(opt => ({ label: opt, value: opt }));
 
-export default function Search({ onSearch }) {
+export default function Search() {
     const [selectedMethod, setSelectedMethod] = useState('');
     const [selectedClaim, setSelectedClaim] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
@@ -43,11 +43,16 @@ export default function Search({ onSearch }) {
         onSearch(fullSearchTerm);
     };
 
+    const onSearch = (fullSearchTerm) => {
+        console.log(`Searching for ${fullSearchTerm}`);
+    }
+
+
     return (
         <>
             <div className={styles.outerContainer}>
                 {/*Search Selection*/}
-                <div className={styles.searchContainer}>
+                <div className={styles.contentContainer}>
                     <a className={styles.h2}>Search a Claim:</a>
 
                     <a className={styles.h3}>Select a Method:</a>
@@ -65,7 +70,7 @@ export default function Search({ onSearch }) {
             {/* Display the search term */}
             {searchTerm && (
                 <div className={styles.outerContainer}>
-                    <div className={styles.searchContainer}>
+                    <div className={styles.contentContainer}>
                         <p>Search Term: {searchTerm}</p>
                     </div>
                 </div>
