@@ -15,7 +15,7 @@ export default function ArticleForm() {
     event.preventDefault();
     // You can handle the data submission or processing here
     // For now, let's just log the entered details
-    console.log({
+    console.articleData({
       author,
       title,
       journal,
