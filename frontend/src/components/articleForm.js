@@ -25,7 +25,7 @@ export default function ArticleForm() {
       pages,
     });
     try {
-      const response = await fetch('https://cise-5036.vercel.app/api/suggest', { 
+      const response = await fetch('https://https://github.com/LeoLe00/CISE-5036/blob/main/backend/routes/api/suggest', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
