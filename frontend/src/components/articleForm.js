@@ -24,6 +24,25 @@ export default function ArticleForm() {
       number,
       pages,
     });
+    try {
+      const response = await fetch('https://cise-5036.vercel.app/api/suggest', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(articleData),
+      });
+  
+      const result = await response.json();
+  
+      if (response.status === 200) {
+        console.log(result.success); 
+      } else {
+        console.error(result.error);
+      }
+    } catch (error) {
+      console.error('Error while submitting the article:', error);
+    }
   };
 
   return (
