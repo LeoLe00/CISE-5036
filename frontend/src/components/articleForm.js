@@ -14,7 +14,7 @@ export default function ArticleForm() {
   const handleSubmit = async(event) => {
     event.preventDefault();
    
-    console.log({
+    const articleData = {
       author,
       title,
       journal,
@@ -23,6 +23,7 @@ export default function ArticleForm() {
       number,
       pages,
     });
+    console.log(articleData);
 
     try {
       const response = await fetch('https://cise-5036.vercel.app/api/suggest', { 
