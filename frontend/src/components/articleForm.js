@@ -14,6 +14,16 @@ export default function ArticleForm() {
   const handleSubmit = async(event) => {
     event.preventDefault();
    
+   const articleData = {
+      author,
+      title,
+      journal,
+      year,
+      volume,
+      number,
+      pages,
+    };
+  
     console.log({
       author,
       title,
