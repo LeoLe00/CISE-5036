@@ -23,6 +23,7 @@ export default function ArticleForm() {
       number,
       pages,
     });
+    console.log(articleData);
 
     try {
       const response = await fetch('https://cise-5036.vercel.app/api/suggest', { 
@@ -30,7 +31,7 @@ export default function ArticleForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(log),
+        body: JSON.stringify(articleData),
       });
   
       const result = await response.json();
