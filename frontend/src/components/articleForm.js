@@ -22,9 +22,18 @@ export default function ArticleForm() {
       volume,
       number,
       pages,
+    };
+  
+    console.log({
+      author,
+      title,
+      journal,
+      year,
+      volume,
+      number,
+      pages,
     });
     console.log(articleData);
-
     try {
       const response = await fetch('https://cise-5036.vercel.app/api/suggest', { 
         method: 'POST',
