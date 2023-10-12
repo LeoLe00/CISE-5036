@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const router = express.Router();
 
-const connectionString = 'YOUR_MONGODB_ATLAS_CONNECTION_STRING'; // from MongoDB Atlas
+const connectionString = '"mongodb+srv://user1:HFTGHEsrTYC8OJWt@cluster0.hvwapzz.mongodb.net/?retryWrites=true&w=majority"'; // from MongoDB Atlas
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
