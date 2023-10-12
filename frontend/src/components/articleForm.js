@@ -31,7 +31,7 @@ export default function ArticleForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(log),
+        body: JSON.stringify(articleData),
       });
   
       const result = await response.json();
