@@ -11,29 +11,39 @@ export default function ArticleForm() {
   const [number, setNumber] = useState('');
   const [pages, setPages] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await fetch('http://localhost:8082/api/articles', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: articleName }),
-    })
-    .then((response) => response.json())
-      .then((data) => console.log('Article created:', data))
-      .catch((error) => console.error('Error creating article:', error));
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+   
+    console.log({
+      author,
+      title,
+      journal,
+      year,
+      volume,
+      number,
+      pages,
+    });
 
-    const data = await response.json();
-    setArticles([...articles, data]);
-    setArticleName('');
-  };
-
-  useEffect(() => {
-    fetchArticles('');
-  }, []);
+    try {
+      const response = await fetch('https://cise-5036.vercel.app/api/suggest', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(log),
+      });
   
-
+      const result = await response.json();
+  
+      if (response.status === 200) {
+        console.log(result.success); 
+      } else {
+        console.error(result.error);
+      }
+    } catch (error) {
+      console.error('Error while submitting the article:', error);
+    }
+  };
 
   return (
     <div className={styles.outerContainer}>
