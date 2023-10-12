@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styles from './search.module.css';
 import Select from 'react-select';
+import SearchResults from './searchResults';
 
 const softwareEngineeringMethods = [
     "Agile",
@@ -38,7 +39,7 @@ export default function Search() {
 
 
     const handleSearch = () => {
-        const fullSearchTerm = `${selectedMethod} ${selectedClaim}`;
+        const fullSearchTerm = `(${selectedMethod}) ${selectedClaim}`;
         setSearchTerm(fullSearchTerm);
         onSearch(fullSearchTerm);
     };
@@ -55,7 +56,7 @@ export default function Search() {
                 <div className={styles.contentContainer}>
                     <a className={styles.h2}>Search a Claim:</a>
 
-                    <a className={styles.h3}>Select a Method:</a>
+                    <a className={styles.h3}>Select a Practice:</a>
                     <Select className={styles.select} options={methodsMap} onChange={handleMethodChange} />
                     <a className={styles.h3}>Select a Claim:</a>
                     <Select className={styles.select} options={claimsMap} onChange={handleClaimChange} />
@@ -73,6 +74,7 @@ export default function Search() {
                     <div className={styles.contentContainer}>
                         <p>Search Term: {searchTerm}</p>
                     </div>
+                        <SearchResults /> 
                 </div>
             )}
         </>

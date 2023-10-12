@@ -2,47 +2,50 @@ import styles from './searchResults.module.css';
 
 export default function SearchResults(props) {
 
-    const test1 = new Map([
+    const tddArticle1 = new Map([
         ["id", "1"],
-        ["title", "The Impact of Test-Driven Development on Software Quality"],
-        ["authors", "A. Johnson, B. Smith, C. Davis"],
-        ["year", "2018"],
-        ["journalConference", "IEEE International Conference on Software Testing, Verification, and Validation"],
+        ["title", "The Impact of Test-Driven Development on Software Quality: A Controlled Experiment"],
+        ["authors", "Munir, H., Wnuk, K., Petersen, K."],
+        ["year", "2014"],
+        ["journalConference", "IEEE Transactions on Software Engineering"],
+        ["sePractice", "Test-Driven Development"],
+        ["claim", "TDD improves software quality by catching defects early in the development process"],
+        ["evidenceResult", "Supporting"],
+        ["researchType", "Controlled Experiment"],
+        ["participantType", "Academic"]
+    ]);
+    
+    const tddArticle2 = new Map([
+        ["id", "2"],
+        ["title", "Does Test-Driven Development Really Improve Software Design Quality?"],
+        ["authors", "Janzen, D. S., Saiedian, H."],
+        ["year", "2008"],
+        ["journalConference", "International Conference on Software Engineering"],
         ["sePractice", "Test-Driven Development"],
         ["claim", "TDD improves software quality by catching defects early in the development process"],
         ["evidenceResult", "Supporting"],
         ["researchType", "Empirical Study"],
         ["participantType", "Academic"]
     ]);
-    const test2 = new Map([
-        ["id", "2"],
-        ["title", "Adoption and Challenges of Test-Driven Development in Industry"],
-        ["authors", "L. Garcia, S. Patel, M. Lee"],
-        ["year", "2019"],
-        ["journalConference", "International Symposium on Empirical Software Engineering and Measurement"],
-        ["sePractice", "Test-Driven Development"],
-        ["claim", "TDD adoption is increasing in the software industry, but challenges persist"],
-        ["evidenceResult", "Mixed"],
-        ["researchType", "Survey and Case Study"],
-        ["participantType", "Industry"]
-    ]);
-    const test3 = new Map([
+    
+    const tddArticle3 = new Map([
         ["id", "3"],
-        ["title", "Evaluating the Effectiveness of Test-Driven Development in Agile Teams"],
-        ["authors", "K. Thompson, J. Roberts, A. Davis"],
-        ["year", "2020"],
-        ["journalConference", "Agile Conference"],
+        ["title", "Challenging the Effectiveness of Test-Driven Development: A Critical Review"],
+        ["authors", "Smith, J., Brown, A."],
+        ["year", "2019"],
+        ["journalConference", "International Conference on Software Engineering"],
         ["sePractice", "Test-Driven Development"],
-        ["claim", "TDD is an effective practice in improving code quality and reducing defects"],
-        ["evidenceResult", "Supporting"],
-        ["researchType", "Empirical Study"],
-        ["participantType", "Industry"]
+        ["claim", "TDD improves software quality by catching defects early in the development process"],
+        ["evidenceResult", "Opposing"],
+        ["researchType", "Literature Review"],
+        ["participantType", "Academic"]
     ]);
+    
 
     const testResults = [
-        test1,
-        test2,
-        test3
+        tddArticle1,
+        tddArticle2,
+        tddArticle3
     ];
 
     return (

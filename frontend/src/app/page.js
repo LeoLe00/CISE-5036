@@ -10,7 +10,6 @@ export default function Home() {
       - searching functionality working with the backend
       - results table
       */}
-      <SearchResults />
     </main>
 
 
