@@ -15,7 +15,7 @@ export default function ArticleForm() {
     event.preventDefault();
     // You can handle the data submission or processing here
     // For now, let's just log the entered details
-    console.articleData({
+    console.log({
       author,
       title,
       journal,
@@ -24,25 +24,7 @@ export default function ArticleForm() {
       number,
       pages,
     });
-    try {
-      const response = await fetch('https://https://github.com/LeoLe00/CISE-5036/blob/main/backend/routes/api/suggest', { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(articleData),
-      });
-  
-      const result = await response.json();
-  
-      if (response.status === 200) {
-        console.log(result.success); 
-      } else {
-        console.error(result.error);
-      }
-    } catch (error) {
-      console.error('Error while submitting the article:', error);
-    }
+    
   };
 
   return (
