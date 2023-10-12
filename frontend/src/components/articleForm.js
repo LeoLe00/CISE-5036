@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './articleForm.module.css';
 
 export default function ArticleForm() {
@@ -11,10 +11,9 @@ export default function ArticleForm() {
   const [number, setNumber] = useState('');
   const [pages, setPages] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    // You can handle the data submission or processing here
-    // For now, let's just log the entered details
+   
     console.log({
       author,
       title,
@@ -24,6 +23,26 @@ export default function ArticleForm() {
       number,
       pages,
     });
+
+    try {
+      const response = await fetch('https://cise-5036.vercel.app/api/suggest', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(log),
+      });
+  
+      const result = await response.json();
+  
+      if (response.status === 200) {
+        console.log(result.success); 
+      } else {
+        console.error(result.error);
+      }
+    } catch (error) {
+      console.error('Error while submitting the article:', error);
+    }
   };
 
   return (
