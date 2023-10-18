@@ -10,6 +10,7 @@ export default function ArticleForm() {
   const [volume, setVolume] = useState('');
   const [number, setNumber] = useState('');
   const [pages, setPages] = useState('');
+  const [message, setMessage] = useState(null);
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -23,20 +24,9 @@ export default function ArticleForm() {
       number,
       pages,
     };
-  
-    console.log({
-      author,
-      title,
-      journal,
-      year,
-      volume,
-      number,
-      pages,
-    });
-    console.log(articleData);
 
     try {
-      const response = await fetch('http://localhost:3000/', { 
+      const response = await fetch('http://localhost:8082/api/suggest', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,12 +37,13 @@ export default function ArticleForm() {
       const result = await response.json();
   
       if (response.status === 200) {
-        console.log(result.success); 
+        setMessage(result.message); 
       } else {
-        console.error(result.error);
+        setMessage(result.error || 'Something went wrong.');
       }
     } catch (error) {
       console.error('Error while submitting the article:', error);
+      setMessage('An unexpected error occurred.');
     }
   };
 
@@ -60,6 +51,7 @@ export default function ArticleForm() {
     <div className={styles.outerContainer}>
       <div className={styles.articleFormContainer}>
         <h2>Research Article Suggestion Form</h2>
+        {message && <div className={styles.message}>{message}</div>}
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="author">Author(s):</label>
