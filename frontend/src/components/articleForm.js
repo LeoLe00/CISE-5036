@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './articleForm.module.css';
 
 export default function ArticleForm() {
@@ -34,8 +34,9 @@ export default function ArticleForm() {
       pages,
     });
     console.log(articleData);
+
     try {
-      const response = await fetch('https://https://cise-5036-46h3j5ncw-leole00.vercel.app', { 
+      const response = await fetch('http://localhost:3000/', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
