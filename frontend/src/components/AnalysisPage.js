@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import styles from './AnalysisPage.module.css';
 
 function AnalysisPage() {
+    const [articles, setArticles] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     const [approvedArticles, setApprovedArticles] = useState([
         { id: 1, title: 'Article 1', content: 'This is the content of Article 1.', analysis: '' },
         { id: 2, title: 'Article 2', content: 'This is the content of Article 2.', analysis: '' },
@@ -22,6 +25,18 @@ function AnalysisPage() {
         setSelectedArticle(null);
         setAnalysisText('');
     };
+
+    const fetchArticles = async () => {
+        try {
+          const response = await fetch('http://localhost:8082/api/moderate/approved');
+          const data = await response.json();
+          setArticles(data);
+          setLoading(false);
+        } catch (error) {
+          console.error('Failed to fetch articles:', error);
+          setLoading(false);
+        }
+      };
 
     return (
         <div className="analysis-page">
@@ -48,6 +63,21 @@ function AnalysisPage() {
                     <button onClick={handleAnalysisSubmit}>Submit Analysis</button>
                 </div>
             )}
+
+{loading ? (
+        <p>Loading articles...</p>
+      ) : (
+        articles.map(article => (
+          <div key={article._id} className={styles.article}>
+            <h3>{article.title}</h3>
+            <p>Author: {article.author}</p>
+            <p><strong>Journal:</strong> {article.journal}</p>
+            <p><strong>Year:</strong> {article.year}</p>
+            <button onClick={() => handleApprove(article._id)}>Approve</button>
+            <button onClick={() => handleReject(article._id)}>Reject</button>
+          </div>
+        ))
+      )}
         </div>
     );
 }

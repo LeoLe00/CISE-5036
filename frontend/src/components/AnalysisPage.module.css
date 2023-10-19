@@ -58,3 +58,21 @@
 .analysis-modal h3 {
     margin-top: 0;
 }
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .article {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .container button {
+    margin-right: 10px;
+    padding: 5px 15px;
+    font-size: 16px;
+  }

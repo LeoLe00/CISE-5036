@@ -14,6 +14,15 @@ router.get('/pending', async (_req, res) => {
   }
 });
 
+router.get('/approved', async (_req, res) => {
+  try {
+    const articles = await Article.find({ status: 'approved' });
+    res.status(200).send(articles);
+  } catch (error) {
+    res.status(500).send({ error: 'Failed to retrieve approved articles.' });
+  }
+});
+
 
 router.put('/approve/:id', async (req, res) => {
   try {
