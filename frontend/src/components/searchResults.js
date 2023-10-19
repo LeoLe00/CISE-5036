@@ -1,11 +1,7 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import styles from './searchResults.module.css';
-import axios from 'axios';
 
 export default function SearchResults(props) {
-/*
+
     const tddArticle1 = new Map([
         ["id", "1"],
         ["title", "The Impact of Test-Driven Development on Software Quality: A Controlled Experiment"],
@@ -51,42 +47,8 @@ export default function SearchResults(props) {
         tddArticle2,
         tddArticle3
     ];
-    */
-    const [article, setArticle] = useState({});
-    const { id } = useParams();
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:8082/api/articles/${id}`)
-            .then((res) => {
-                setArticle(res.data);
-            })
-            .catch((err) => {
-                console.log('Error from searchResults');
-            });
-    }, [id]);
-
-    const ArticleResult = (
-        <div>
-          <table className='table table-hover table-dark'>
-            <tbody>
-              <tr>
-                <td>{article.author}</td>
-                <td>{article.title}</td>
-                <td>{article.journal}</td>
-                <td>{article.year}</td>
-                <td>{article.volume}</td>
-                <td>{article.number}</td>
-                <td>{article.pages}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      );
-      
 
     return (
-        <>
         <table className={styles.table}>
             <thead>
                 <tr>
@@ -102,9 +64,20 @@ export default function SearchResults(props) {
                 </tr>
             </thead>
             <tbody>
-            {ArticleResult}
+                {testResults.map((result, index) => (
+                    <tr key={result.get("id")}>
+                        <td>{result.get("title")}</td>
+                        <td>{result.get("authors")}</td>
+                        <td>{result.get("year")}</td>
+                        <td>{result.get("journalConference")}</td>
+                        <td>{result.get("sePractice")}</td>
+                        <td>{result.get("claim")}</td>
+                        <td>{result.get("evidenceResult")}</td>
+                        <td>{result.get("researchType")}</td>
+                        <td>{result.get("participantType")}</td>
+                    </tr>
+                ))}
             </tbody>
         </table>
-    </>
     );
 };
