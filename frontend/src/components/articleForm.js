@@ -31,6 +31,7 @@ export default function ArticleForm() {
           volume: '',
           number: '',
           pages: '',
+          status: 'waiting',
         });
       })
       .catch((err) => {
