@@ -57,7 +57,7 @@ function ModerationPage() {
         articles.map(article => (
           <div key={article._id} className={styles.article}>
             <h3>{article.title}</h3>
-            <p>Author: {article.author}</p>
+            <p><strong>Author:</strong> {article.author}</p>
             <p><strong>Journal:</strong> {article.journal}</p>
             <p><strong>Year:</strong> {article.year}</p>
             <button onClick={() => handleApprove(article._id)}>Approve</button>
