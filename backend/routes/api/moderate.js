@@ -5,22 +5,6 @@ const Article = require('../../models/Articles');
 ;
 const router = express.Router();
 
-const Article = mongoose.model('Article', {
-  author: String,
-  title: String,
-  journal: String,
-  year: String,
-  volume: String,
-  number: String,
-  pages: String,
-  status: {
-    type: String,
-    default: 'waiting',
-    enum: ['waiting', 'approved', 'rejected']
-}
-});
-
-
 router.get('/pending', async (_req, res) => {
   try {
     const articles = await Article.find({ status: 'waiting' });
