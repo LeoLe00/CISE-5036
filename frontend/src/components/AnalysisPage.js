@@ -3,13 +3,11 @@ import React, { useState } from 'react';
 import styles from './AnalysisPage.module.css';
 
 function AnalysisPage() {
+    const [approvedArticles, setApprovedArticles] = useState([]);
+    
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const [approvedArticles, setApprovedArticles] = useState([
-        { id: 1, title: 'Article 1', content: 'This is the content of Article 1.', analysis: '' },
-        { id: 2, title: 'Article 2', content: 'This is the content of Article 2.', analysis: '' },
-    ]);
 
     const [selectedArticle, setSelectedArticle] = useState(null);
     const [analysisText, setAnalysisText] = useState('');
