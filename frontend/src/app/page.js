@@ -1,5 +1,6 @@
 import styles from './page.module.css'
 import Search from '../components/search'
+import SearchResults from '..//components/searchResults'
 
 export default function Home() {
   return (

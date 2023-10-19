@@ -6,6 +6,7 @@ const cors = require('cors');
 
 // routes
 const articles = require('./routes/api/articles');
+const suggest = require('./routes/api/suggest')
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get('/', (req, res) => res.send('Hello world!'));
 
 // use Routes
 app.use('/api/articles', articles);
+app.use('/api/suggest', suggest);
 
 const port = process.env.PORT || 8082;
 

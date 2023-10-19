@@ -1,9 +1,11 @@
 .outerContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.searchContainer {
+.contentContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,6 +19,13 @@
 
 .h2 {
     font-size: 2rem;
+    font-weight: 600;
+}
+
+.h3 {
+    align-self: start;
+    margin-left: 5rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -46,3 +55,31 @@
 .searchButton:hover {
     background-color: #274252;
 }
+
+.dropdown {
+    top: 100%;
+    left: 0;
+    z-index: 0;
+    width: 40vw;
+    height: 10rem;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    color: black;
+    background-color: white;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .dropdownItem {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdownItem:hover {
+    background-color: #5d9dc4;
+  }
+
+  .select {
+    width: 40vw;
+  }

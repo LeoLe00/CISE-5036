@@ -1,0 +1,33 @@
+/* FILEPATH: c:\Users\antjo\Documents\GitHub\CISE-5036\frontend\src\components\searchResults.module.css */
+
+.table {
+    border-collapse: collapse;
+    width: 80%;
+    align-self: center;
+    background-color: rgb(229, 234, 244);
+    border-radius: 10px;
+    margin: 2rem;
+    box-sizing: border-box;
+}
+
+.table th {
+    text-align: left;
+    padding: 0.5rem;
+    color: white;
+    background-color: #4a6f86;
+}
+
+.table tr:nth-child(even) {
+    background-color: #b2cee8;
+}
+
+.table tr:hover {
+    background-color: #5c9cdd;
+}
+
+.table td {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+    color: black;
+}
