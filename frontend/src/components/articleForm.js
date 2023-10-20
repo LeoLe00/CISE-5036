@@ -21,7 +21,7 @@ export default function ArticleForm() {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:8082/api/articles', article)
+      .post('http://localhost:8082/api/suggest', article)
       .then((res) => {
         setArticle({
           author: '',
