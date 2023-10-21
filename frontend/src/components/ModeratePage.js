@@ -37,7 +37,7 @@ function ModerationPage() {
 
   const handleReject = async (id) => {
     try {
-      await fetch(`http://localhost:8082/api/moderate/reject/${id}`, {
+      await fetch(`https://cise-5036-bbkkk.vercel.app/api/moderate/reject/${id}`, {
         method: 'PUT'
       });
       // Remove rejected article from the list
