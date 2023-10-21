@@ -21,7 +21,7 @@ export default function ArticleForm() {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:8082/api/articles', article)
+      .post('https://cise-5036-bbkkk.vercel.app/api/articles', article)
       .then((res) => {
         setArticle({
           author: '',
