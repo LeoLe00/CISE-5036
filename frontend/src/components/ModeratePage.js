@@ -10,7 +10,7 @@ function ModerationPage() {
     
     const fetchArticles = async () => {
       try {
-        const response = await fetch('http://localhost:8082/api/moderate/pending');
+        const response = await fetch('https://cise-5036-bbkkk.vercel.app/api/moderate/pending');
         const data = await response.json();
         setArticles(data);
         setLoading(false);
@@ -25,7 +25,7 @@ function ModerationPage() {
 
   const handleApprove = async (id) => {
     try {
-      await fetch(`http://localhost:8082/api/moderate/approve/${id}`, {
+      await fetch(`https://cise-5036-bbkkk.vercel.app/api/moderate/approve/${id}`, {
         method: 'PUT'
       });
       
