@@ -23,7 +23,7 @@ function AnalysisPage() {
 
   const handleAnalysisSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:8082/api/analysis/addInfo/${selectedArticle.title}`, {
+      const response = await fetch(`https://cise-5036-bbkkk.vercel.app/api/analysis/addInfo/${selectedArticle.title}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
