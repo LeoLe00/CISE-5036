@@ -46,7 +46,11 @@ const ArticleSchema = new mongoose.Schema({
         type: String,
         default: 'waiting',
         enum: ['waiting', 'approved', 'rejected']
-    }
+    
+    },
+    analysisData: {
+        type: String,
+        default: '',}
 });
 
 module.exports = Article = mongoose.model('article', ArticleSchema);

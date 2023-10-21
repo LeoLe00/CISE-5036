@@ -1,83 +1,73 @@
-"use client";
-import React, { useState } from 'react';
+'use client'
+import { useState, useEffect } from 'react';
 import styles from './AnalysisPage.module.css';
 
 function AnalysisPage() {
-    const [approvedArticles, setApprovedArticles] = useState([]);
-    
-    const [articles, setArticles] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [approvedArticles, setApprovedArticles] = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [extractedInfo, setExtractedInfo] = useState('');
 
-
-    const [selectedArticle, setSelectedArticle] = useState(null);
-    const [analysisText, setAnalysisText] = useState('');
-
-    const handleAnalysisSubmit = () => {
-        const updatedArticles = approvedArticles.map(article => {
-            if (article.id === selectedArticle.id) {
-                return { ...article, analysis: analysisText };
-            }
-            return article;
-        });
-        setApprovedArticles(updatedArticles);
-        setSelectedArticle(null);
-        setAnalysisText('');
+  useEffect(() => {
+    const fetchApprovedArticles = async () => {
+      try {
+        const response = await fetch('http://localhost:8082/api/moderate/approved');
+        const data = await response.json();
+        setApprovedArticles(data);
+      } catch (error) {
+        console.error('Failed to fetch approved articles:', error);
+      }
     };
 
-    const fetchArticles = async () => {
-        try {
-          const response = await fetch('http://localhost:8082/api/moderate/approved');
-          const data = await response.json();
-          setArticles(data);
-          setLoading(false);
-        } catch (error) {
-          console.error('Failed to fetch articles:', error);
-          setLoading(false);
-        }
-      };
+    fetchApprovedArticles();
+  }, []);
 
-    return (
-        <div className="analysis-page">
-            <h2>Analysis Page</h2>
-            <ul>
-                {approvedArticles.map(article => (
-                    <li key={article.id}>
-                        <h3>{article.title}</h3>
-                        <p>{article.content}</p>
-                        <button onClick={() => setSelectedArticle(article)}>Write Analysis</button>
-                        {article.analysis && <div><strong>Analysis: </strong>{article.analysis}</div>}
-                    </li>
-                ))}
-            </ul>
+  const handleAnalysisSubmit = async () => {
+    try {
+      const response = await fetch(`http://localhost:8082/api/analysis/addInfo/${selectedArticle.title}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          extractedData: extractedInfo,
+        }),
+      });
 
-            {selectedArticle && (
-                <div className="analysis-modal">
-                    <h3>Analyze: {selectedArticle.title}</h3>
-                    <textarea
-                        value={analysisText}
-                        onChange={e => setAnalysisText(e.target.value)}
-                        placeholder="Write your analysis here..."
-                    />
-                    <button onClick={handleAnalysisSubmit}>Submit Analysis</button>
-                </div>
-            )}
+      if (response.ok) {
+        console.log('Information added successfully.');
+      } else {
+        console.error('Failed to add information.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
-{loading ? (
-        <p>Loading articles...</p>
-      ) : (
-        articles.map(article => (
-          <div key={article._id} className={styles.article}>
-            <h3>{article.title}</h3>
-            <p>Author: {article.author}</p>
-            <p><strong>Journal:</strong> {article.journal}</p>
-            <p><strong>Year:</strong> {article.year}</p>
-            <button onClick={() => handleApprove(article._id)}>Approve</button>
-            <button onClick={() => handleReject(article._id)}>Reject</button>
-          </div>
-        ))
-      )}
+  return (
+    <div className={styles.container}>
+      <h2>Analysis Page</h2>
+
+      <select onChange={(e) => setSelectedArticle(approvedArticles.find(article => article._id === e.target.value))}>
+        <option value="">Select an article</option>
+        {approvedArticles.map(article => (
+          <option key={article._id} value={article._id}>{article.title}</option>
+        ))}
+      </select>
+
+      {selectedArticle && (
+        <div className={styles.analysisContainer}>
+          <h3>{selectedArticle.title}</h3>
+          <textarea
+            placeholder="Extracted Information"
+            value={extractedInfo}
+            onChange={(e) => setExtractedInfo(e.target.value)}
+          ></textarea>
+          <button onClick={handleAnalysisSubmit}>Submit Analysis</button>
         </div>
-    );
+      )}
+    </div>
+  );
 }
 
 export default AnalysisPage;
+
