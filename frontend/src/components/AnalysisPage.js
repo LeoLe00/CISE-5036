@@ -10,7 +10,7 @@ function AnalysisPage() {
   useEffect(() => {
     const fetchApprovedArticles = async () => {
       try {
-        const response = await fetch('http://localhost:8082/api/moderate/approved');
+        const response = await fetch('https://cise-5036-bbkkk.vercel.app/api/moderate/approved');
         const data = await response.json();
         setApprovedArticles(data);
       } catch (error) {
