@@ -2,10 +2,13 @@
 import { useState, useEffect } from 'react';
 import styles from './AnalysisPage.module.css';
 
+
+
 function AnalysisPage() {
   const [approvedArticles, setApprovedArticles] = useState([]);
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [extractedInfo, setExtractedInfo] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const fetchApprovedArticles = async () => {
@@ -33,20 +36,20 @@ function AnalysisPage() {
         }),
       });
 
-      if (response.ok) {
-        console.log('Information added successfully.');
+      if (response.status === 200) {
+        setMessage('Information added successfully.');
       } else {
-        console.error('Failed to add information.');
+        setMessage('Failed to add information.');
       }
     } catch (error) {
       console.error('Error:', error);
+        setMessage('An error occurred. Please try again.');
     }
   };
 
   return (
     <div className={styles.container}>
       <h2>Analysis Page</h2>
-
       <select onChange={(e) => setSelectedArticle(approvedArticles.find(article => article._id === e.target.value))}>
         <option value="">Select an article</option>
         {approvedArticles.map(article => (
@@ -63,6 +66,8 @@ function AnalysisPage() {
             onChange={(e) => setExtractedInfo(e.target.value)}
           ></textarea>
           <button onClick={handleAnalysisSubmit}>Submit Analysis</button>
+          {message && <div className={styles.message}>{message}</div>}
+
         </div>
       )}
     </div>

@@ -23,6 +23,8 @@ export default function ArticleForm() {
     axios
       .post('http://localhost:8082/api/articles', article)
       .then((res) => {
+        console.log(res.data);
+        setMessage(res.data.message);
         setArticle({
           author: '',
           title: '',
