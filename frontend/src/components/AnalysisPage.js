@@ -13,7 +13,7 @@ function AnalysisPage() {
   useEffect(() => {
     const fetchApprovedArticles = async () => {
       try {
-        const response = await fetch('http://localhost:8082/api/moderate/approved');
+        const response = await fetch('https://cise-5036-bbkkk.vercel.app/api/moderate/approved');
         const data = await response.json();
         setApprovedArticles(data);
       } catch (error) {
@@ -26,7 +26,7 @@ function AnalysisPage() {
 
   const handleAnalysisSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:8082/api/analysis/addInfo/${selectedArticle.title}`, {
+      const response = await fetch(`https://cise-5036-bbkkk.vercel.app/api/analysis/addInfo/${selectedArticle.title}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ function ModerationPage() {
     
     const fetchArticles = async () => {
       try {
-        const response = await fetch('http://localhost:8082/api/moderate/pending');
+        const response = await fetch('https://cise-5036-bbkkk.vercel.app/api/moderate/pending');
         const data = await response.json();
         setArticles(data);
         setLoading(false);
@@ -25,7 +25,7 @@ function ModerationPage() {
 
   const handleApprove = async (id) => {
     try {
-      await fetch(`http://localhost:8082/api/moderate/approve/${id}`, {
+      await fetch(`https://cise-5036-bbkkk.vercel.app/api/moderate/approve/${id}`, {
         method: 'PUT'
       });
       
@@ -37,7 +37,7 @@ function ModerationPage() {
 
   const handleReject = async (id) => {
     try {
-      await fetch(`http://localhost:8082/api/moderate/reject/${id}`, {
+      await fetch(`https://cise-5036-bbkkk.vercel.app/api/moderate/reject/${id}`, {
         method: 'PUT'
       });
       // Remove rejected article from the list
@@ -57,7 +57,7 @@ function ModerationPage() {
         articles.map(article => (
           <div key={article._id} className={styles.article}>
             <h3>{article.title}</h3>
-            <p>Author: {article.author}</p>
+            <p><strong>Author:</strong> {article.author}</p>
             <p><strong>Journal:</strong> {article.journal}</p>
             <p><strong>Year:</strong> {article.year}</p>
             <button onClick={() => handleApprove(article._id)}>Approve</button>
